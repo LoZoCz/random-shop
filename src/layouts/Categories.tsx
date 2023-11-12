@@ -1,0 +1,35 @@
+import Header from "../components/Header";
+import CategoryBox from "../components/CategoryBox";
+import { useState, useEffect } from "react";
+import axios from "axios";
+
+const Categories = () => {
+  const [categories, setCategories] = useState<string[]>([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/categories")
+      .then((response) => {
+        setCategories(response.data);
+      })
+      .catch((error) => {
+        console.error("Błąd pobierania danych:", error);
+      });
+  }, []);
+
+  return (
+    <>
+      <Header />
+      <section
+        data-name="categories-section"
+        className="grid grid-cols-4 gap-8 px-40 py-16"
+      >
+        {categories.map((category: string, i: number) => {
+          return <CategoryBox key={i} category={category} />;
+        })}
+      </section>
+    </>
+  );
+};
+
+export default Categories;
