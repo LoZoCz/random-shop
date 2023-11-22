@@ -1,27 +1,55 @@
-# React + TypeScript + Vite
+# QuantumMart - Your Ultimate Online Shopping Destination
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to QuantumMart, your go-to online store for all your shopping needs! Whether you're looking for the latest tech gadgets, trendy fashion items, or everyday essentials, QuantumMart has you covered.
 
-Currently, two official plugins are available:
+## Getting Started
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+To get started with QuantumMart, follow these simple steps:
 
-## Expanding the ESLint configuration
+1. Clone the Repository:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+   ```bash
+   git clone https://github.com/your-username/QuantumMart.git
+   ```
 
-- Configure the top-level `parserOptions` property like this:
+2. Navigate to the Project Directory:
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
+```bash
+cd QuantumMart
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. Install Dependencies:
+
+```bash
+npm install
+```
+
+4. Run the Application:
+
+```bash
+npm start
+```
+
+Open QuantumMart in Your Browser:
+Visit http://localhost:3000 to explore QuantumMart.
+
+## Features
+
+- User Authentication: Securely create an account, log in, and enjoy a personalized shopping experience.
+
+- Product Categories: Easily navigate through diverse product categories.
+- Product Search: Find your desired products quickly with our efficient search functionality.
+- Shopping Cart: Add products to your cart and proceed to a seamless checkout process.
+- Order History: View and track your order history for easy reference.
+- Responsive Design: QuantumMart is optimized for a seamless experience on various devices.
+
+## Technologies Used
+
+- React: Frontend library for building user interfaces.
+- Node.js: Backend JavaScript runtime.
+- Express: Web application framework for Node.js.
+- dummyJSON: Rest API
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
