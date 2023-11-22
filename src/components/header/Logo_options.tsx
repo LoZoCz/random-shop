@@ -1,4 +1,4 @@
-import Logo from "./Logo";
+import Logo from "../Logo";
 import { Link } from "react-router-dom";
 
 const Logo_options = () => {

@@ -1,7 +1,7 @@
-import FilterNavbar from "./FilterNavbar";
-import ProductsGrid from "./ProductsGrid";
+import FilterNavbar from "../filters/FilterNavbar";
+import ProductsGrid from "../ProductsGrid";
 import { useState, useEffect } from "react";
-import { filtersBody, productTypes, dataTypes } from "../utils/siteData";
+import { filtersBody, productTypes, dataTypes } from "../../utils/siteData";
 import axios from "axios";
 
 type ProductsMainGridProps = {

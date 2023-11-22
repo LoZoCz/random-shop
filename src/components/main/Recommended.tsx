@@ -1,6 +1,6 @@
-import ProductBox from "./ProductBox";
+import ProductBox from "../ProductBox";
 import { useState, useEffect } from "react";
-import { productTypes } from "../utils/siteData";
+import { productTypes } from "../../utils/siteData";
 import axios from "axios";
 
 const Recommended = () => {

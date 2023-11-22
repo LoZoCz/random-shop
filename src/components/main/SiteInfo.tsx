@@ -1,4 +1,4 @@
-import { siteInfo } from "../utils/siteData";
+import { siteInfo } from "../../utils/siteData";
 const SiteInfo = () => {
   return (
     <section

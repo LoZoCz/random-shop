@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 import axios from "axios";
 import { productTypes } from "../utils/siteData";
 

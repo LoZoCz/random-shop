@@ -1,4 +1,4 @@
-import { filtersBody } from "../utils/siteData";
+import { filtersBody } from "../../utils/siteData";
 
 type PriceFilterProps = {
   filters?: filtersBody;

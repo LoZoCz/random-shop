@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
-import { filtersBody } from "../utils/siteData";
+import { filtersBody } from "../../utils/siteData";
 
 type RateFilterProps = {
   filters: filtersBody;

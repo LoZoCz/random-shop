@@ -1,5 +1,5 @@
-import Header from "../components/Header";
-import CategoryBox from "../components/CategoryBox";
+import Header from "../components/header/Header";
+import CategoryBox from "../components/main/CategoryBox";
 import { useState, useEffect } from "react";
 import axios from "axios";
 

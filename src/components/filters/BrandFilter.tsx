@@ -1,4 +1,4 @@
-import { filtersBody, uniqueBrands } from "../utils/siteData";
+import { filtersBody, uniqueBrands } from "../../utils/siteData";
 
 type BrandFilterProps = {
   filters: filtersBody;

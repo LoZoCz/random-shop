@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Header from "../components/header/Header";
 
 const UserTab = () => {
   return (
@@ -11,4 +11,4 @@ const UserTab = () => {
 
 export default UserTab;
 
-// autoryzajca uzytkonikow, logowanie i rejestracja, strona logowania i rejestracji, router i "kontekst" spawdzajacy zalogowanie
+// autoryzajca uzytkonikow, logowanie i rejestracja, router i "kontekst" spawdzajacy zalogowanie

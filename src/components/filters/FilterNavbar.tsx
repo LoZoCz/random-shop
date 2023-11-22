@@ -2,7 +2,7 @@ import BrandFilter from "./BrandFilter";
 import PriceFilter from "./PriceFilter";
 import RateFilter from "./RateFilter";
 import StockfFilter from "./StockfFilter";
-import { filtersBody } from "../utils/siteData";
+import { filtersBody } from "../../utils/siteData";
 
 type FilternavbarProps = {
   filters: filtersBody;
