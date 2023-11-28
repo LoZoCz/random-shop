@@ -27,7 +27,7 @@ npm install
 4. Run the Application:
 
 ```bash
-npm start
+npm run dev
 ```
 
 Open QuantumMart in Your Browser:
