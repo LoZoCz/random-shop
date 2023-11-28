@@ -10,5 +10,3 @@ const UserTab = () => {
 };
 
 export default UserTab;
-
-// autoryzajca uzytkonikow, logowanie i rejestracja, router i "kontekst" spawdzajacy zalogowanie

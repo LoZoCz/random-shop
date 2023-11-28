@@ -79,3 +79,27 @@ export type dataTypes = {
 export const uniqueBrands = [
   ...new Set(mockData.products.map((product) => product.brand)),
 ];
+
+export const isEmailValid = (email: string) => {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  return emailRegex.test(email);
+};
+
+export const isPasswordValid = (password: string) => {
+  return password.length >= 8;
+};
+
+export const isUsernameValid = (username: string) => {
+  const usernameRegex = /^[a-zA-Z0-9_]+$/;
+  return usernameRegex.test(username) && username.length >= 6;
+};
+
+export const isPasswordsMatch = (password: string, passwordAuth: string) => {
+  return password.trim() === passwordAuth.trim();
+};
+
+export type ErrorTypes = {
+  errorType: string;
+  errorState: boolean;
+  errorMsg: string;
+};
