@@ -8,7 +8,7 @@ type PassInpProps = {
   setShowPassword: React.Dispatch<React.SetStateAction<boolean>>;
   label: string;
   handleLoginData: (fieldName: string, value: string) => void;
-  resetErrors: () => void;
+  resetErrors?: () => void;
   error?: ErrorTypes;
 };
 
@@ -23,7 +23,9 @@ const PassInp = ({
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    resetErrors();
+    if (resetErrors) {
+      resetErrors();
+    }
     setInputValue(e.target.value);
     handleLoginData(
       label === "auth password" ? "passwordAuth" : label,

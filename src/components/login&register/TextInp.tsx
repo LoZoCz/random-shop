@@ -4,8 +4,8 @@ import { ErrorTypes } from "../../utils/siteData";
 type TextInpTypes = {
   label: string;
   handleLoginData: (fieldName: string, value: string) => void;
-  resetErrors: () => void;
   error?: ErrorTypes;
+  resetErrors?: () => void;
 };
 
 const TextInp = ({
@@ -17,7 +17,9 @@ const TextInp = ({
   const [inputValue, setInputValue] = useState("");
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    resetErrors();
+    if (resetErrors) {
+      resetErrors();
+    }
     setInputValue(e.target.value);
     handleLoginData(label, e.target.value);
   };

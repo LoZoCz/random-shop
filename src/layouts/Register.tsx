@@ -1,9 +1,9 @@
 import Header from "../components/header/Header";
 import { useState } from "react";
 import image from "../assets/loginSvg.svg";
-import LoginForm from "../components/login&register/LoginForm";
+import RegisterForm from "../components/login&register/RegisterForm";
 
-const Login = () => {
+const Register = () => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <>
@@ -18,7 +18,7 @@ const Login = () => {
             alt="login image"
             className="h-full rounded-lg bg-sky-400 p-4"
           />
-          <LoginForm
+          <RegisterForm
             showPassword={showPassword}
             setShowPassword={setShowPassword}
           />
@@ -28,4 +28,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;

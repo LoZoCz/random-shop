@@ -3,66 +3,66 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { productTypes } from "../utils/siteData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import {
+  faArrowRight,
+  faArrowLeft,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 const ItemWrapper = () => {
   const { id } = useParams();
   const [item, setItem] = useState({} as productTypes);
-  const [thumbnailImg, setThumbnailImg] = useState("");
+  const [imageIndex, setImageIndex] = useState(0);
+  const [allImages, setAllImages] = useState<string[]>([]);
 
   useEffect(() => {
     axios
       .get(`http://localhost:5000/product/${id}`)
       .then((response) => {
         setItem(response.data);
-        setThumbnailImg(response.data.thumbnail);
+        setAllImages(() => {
+          const arr = [response.data.thumbnail, ...response.data.images];
+          return arr;
+        });
       })
       .catch((error) => {
         console.error("Błąd pobierania danych:", error);
       });
   }, [id]);
 
+  console.log(allImages);
+
+  const handleImageChange = () => {
+    if (imageIndex === allImages.length - 1) {
+      setImageIndex(0);
+    } else {
+      setImageIndex(imageIndex + 1);
+    }
+  };
+
   return (
     <section
-      className="grid grid-cols-2 place-items-center gap-6 px-40 py-16"
+      className="grid place-items-center grid-cols-2 gap-6 px-32 py-16"
       style={{ height: "calc(100vh - 7rem)" }}
     >
-      <div
-        className="grid place-items-center gap-6"
-        style={{ gridTemplateRows: "3fr 1fr" }}
-      >
+      <div className="flex justify-center items-center relative">
         <img
-          src={thumbnailImg}
+          src={allImages[imageIndex]}
           alt={`${item?.title} image`}
-          className="rounded-md"
-          style={{ height: "30rem" }}
+          className="rounded-md w-[35rem] aspect-video object-cover"
         />
-        <div
-          className={`grid gap-8`}
-          style={{
-            gridTemplateColumns: `repeat(${
-              item?.images && item?.images.length + 1
-            }, 8rem)`,
-            gridTemplateRows: "8rem",
-          }}
+        <button
+          onClick={handleImageChange}
+          className="bg-sky-400 text-white w-12 aspect-square rounded-full absolute top-1/2 -translate-y-1/2 -left-6"
         >
-          <img
-            src={item?.thumbnail}
-            alt={`${item?.title} image`}
-            className="w-full h-full object-cover cursor-pointer rounded-md"
-            onClick={() => setThumbnailImg(item?.thumbnail)}
-          />
-          {item?.images &&
-            item?.images.map((image, index) => (
-              <img
-                key={index}
-                src={image}
-                alt={`${item?.title} image`}
-                className="w-full h-full object-cover cursor-pointer rounded-md"
-                onClick={() => setThumbnailImg(image)}
-              />
-            ))}
-        </div>
+          <FontAwesomeIcon icon={faArrowLeft} />
+        </button>
+        <button
+          onClick={handleImageChange}
+          className="bg-sky-400 text-white w-12 aspect-square rounded-full absolute top-1/2 -translate-y-1/2 -right-6"
+        >
+          <FontAwesomeIcon icon={faArrowRight} />
+        </button>
       </div>
       <div className="flex flex-col gap-4">
         <h1 data-name="item-title" className="text-6xl font-semibold">

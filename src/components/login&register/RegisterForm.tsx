@@ -100,7 +100,9 @@ const RegisterForm = ({ showPassword, setShowPassword }: RegisterFormTypes) => {
       updateErrorState("username", false);
     }
 
-    return console.log("Registration successful", userLoginData);
+    if (mail && username && password && passwordAuth) {
+      console.log("Registration successful", userLoginData);
+    }
   };
 
   const resetErrors = () => {

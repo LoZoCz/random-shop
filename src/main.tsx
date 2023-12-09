@@ -20,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/user" element={<Layouts.UserTab />} />
         <Route path="/cart" />
         <Route path="/login" element={<Layouts.Login />} />
+        <Route path="/register" element={<Layouts.Register />} />
       </Routes>
     </Router>
   </React.StrictMode>,
