@@ -30,8 +30,6 @@ const ItemWrapper = () => {
       });
   }, [id]);
 
-  console.log(allImages);
-
   const handleImageChange = () => {
     if (imageIndex === allImages.length - 1) {
       setImageIndex(0);

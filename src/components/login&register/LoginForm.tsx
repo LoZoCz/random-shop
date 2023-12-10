@@ -2,6 +2,7 @@ import TextInp from "./TextInp";
 import PassInp from "./PassInp";
 import LoginBtn from "./LoginBtn";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 type LoginFormTypes = {
   showPassword: boolean;
@@ -41,9 +42,12 @@ const LoginForm = ({ showPassword, setShowPassword }: LoginFormTypes) => {
         handleLoginData={handleLoginData}
       />
       <LoginBtn />
-      <a className="hover:text-white underline transition-all cursor-pointer">
+      <Link
+        to={"/register"}
+        className="hover:text-white underline transition-all cursor-pointer"
+      >
         New users
-      </a>
+      </Link>
     </form>
   );
 };

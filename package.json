@@ -21,6 +21,7 @@
     "sass": "^1.69.2"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^4.17.19",
     "@types/http-errors": "^2.0.3",
     "@types/react": "^18.2.15",

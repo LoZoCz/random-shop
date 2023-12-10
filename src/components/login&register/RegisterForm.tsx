@@ -9,6 +9,7 @@ import {
   isPasswordsMatch,
   ErrorTypes,
 } from "../../utils/siteData";
+import { Link } from "react-router-dom";
 
 type RegisterFormTypes = {
   showPassword: boolean;
@@ -161,9 +162,12 @@ const RegisterForm = ({ showPassword, setShowPassword }: RegisterFormTypes) => {
         </p>
       )}
       <LoginBtn />
-      <a className="hover:text-white underline transition-all cursor-pointer">
+      <Link
+        to={"/login"}
+        className="hover:text-white underline transition-all cursor-pointer"
+      >
         You already have an anccount?
-      </a>
+      </Link>
     </form>
   );
 };
