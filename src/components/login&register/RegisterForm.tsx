@@ -8,8 +8,10 @@ import {
   isEmailValid,
   isPasswordsMatch,
   ErrorTypes,
+  RegisterUserDataType,
 } from "../../utils/siteData";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 type RegisterFormTypes = {
   showPassword: boolean;
@@ -17,7 +19,7 @@ type RegisterFormTypes = {
 };
 
 const RegisterForm = ({ showPassword, setShowPassword }: RegisterFormTypes) => {
-  const [userLoginData, setUserLoginData] = useState({
+  const [userLoginData, setUserLoginData] = useState<RegisterUserDataType>({
     mail: "",
     username: "",
     password: "",
@@ -55,6 +57,12 @@ const RegisterForm = ({ showPassword, setShowPassword }: RegisterFormTypes) => {
     },
   ]);
 
+  const resetErrors = () => {
+    setErrors((prevErrors) =>
+      prevErrors.map((error) => ({ ...error, errorState: true })),
+    );
+  };
+
   const updateErrorState = (errorType: string, newErrorState: boolean) => {
     setErrors((prevErrors) => {
       const updatedErrors = prevErrors.map((error) =>
@@ -66,7 +74,7 @@ const RegisterForm = ({ showPassword, setShowPassword }: RegisterFormTypes) => {
     });
   };
 
-  const handleRegisterData = (e: React.FormEvent) => {
+  const handleRegisterData = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const { mail, username, password, passwordAuth } = userLoginData;
@@ -77,39 +85,41 @@ const RegisterForm = ({ showPassword, setShowPassword }: RegisterFormTypes) => {
       password.length == 0 ||
       passwordAuth.length == 0
     ) {
-      console.log(errors);
       updateErrorState("blankField", false);
     }
 
     if (!isPasswordsMatch(password, passwordAuth)) {
-      console.log(errors);
       updateErrorState("passwordMatch", false);
     }
 
     if (!isPasswordValid(password)) {
-      console.log(errors);
       updateErrorState("password", false);
     }
 
     if (!isEmailValid(mail)) {
-      console.log(errors);
       updateErrorState("mail", false);
     }
 
     if (!isUsernameValid(username)) {
-      console.log(errors);
       updateErrorState("username", false);
     }
 
-    if (mail && username && password && passwordAuth) {
+    const noErrors = errors.every((error) => error.errorState === true);
+
+    if (noErrors) {
+      const { mail, username, password } = userLoginData;
+      try {
+        const response = await axios.post("https://dummyjson.com/users/add", {
+          username: username,
+          password: password,
+          email: mail,
+        });
+        console.log("Server response:", response.data);
+      } catch (error) {
+        console.error("Error sending data to server:", error);
+      }
       console.log("Registration successful", userLoginData);
     }
-  };
-
-  const resetErrors = () => {
-    setErrors((prevErrors) =>
-      prevErrors.map((error) => ({ ...error, errorState: true })),
-    );
   };
 
   return (

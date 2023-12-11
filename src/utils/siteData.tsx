@@ -103,3 +103,10 @@ export type ErrorTypes = {
   errorState: boolean;
   errorMsg: string;
 };
+
+export type RegisterUserDataType = {
+  mail: string;
+  username: string;
+  password: string;
+  passwordAuth: string;
+};

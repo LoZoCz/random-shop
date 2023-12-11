@@ -1,7 +1,6 @@
 import express from "express";
 import axios from "axios";
 import cors from "cors";
-import { body, validationResult } from "express-validator";
 
 const port = 5000;
 
@@ -106,51 +105,6 @@ app.get("/product/:id", async (req, res) => {
     res.status(500).json({ error: "Wystąpił błąd pobierania danych" });
   }
 });
-
-app.post(
-  "/user/add",
-  [
-    body("mail").isEmail(),
-    body("username")
-      .isLength({ min: 3 })
-      .matches(/^[a-zA-Z0-9_]+$/),
-    body("password").isLength({ min: 8 }),
-    body("passwordAuth").custom((value, { req }) => {
-      if (value !== req.body.password) {
-        throw new Error("Password do not match");
-      }
-      return true;
-    }),
-  ],
-  async (req, res) => {
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
-    }
-
-    const { mail, username, password } = req.body;
-
-    try {
-      const response = await axios.post("https://dummyjson.com/auth/register", {
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-          email: mail,
-        }),
-      });
-
-      res.json({
-        success: true,
-        message: "User added successfully.",
-        user: response.data,
-      });
-    } catch (error) {
-      console.error("Error adding user:", error);
-      res.status(500).json({ error: "Internal Server Error" });
-    }
-  },
-);
 
 app.listen(port, () => {
   console.log(`Serwer działa na porcie ${port}`);
