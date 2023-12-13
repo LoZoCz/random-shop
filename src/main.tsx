@@ -17,10 +17,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         <Route path="/products" element={<Layouts.Products />} />
         <Route path="/product/:id" element={<Layouts.ItemView />} />
         <Route path="/search" element={<Layouts.SearchTab />} />
-        <Route path="/user" element={<Layouts.UserTab />} />
-        <Route path="/cart" />
         <Route path="/login" element={<Layouts.Login />} />
         <Route path="/register" element={<Layouts.Register />} />
+        <Route element={<Layouts.ProtectedRoutes />}>
+          <Route path="/user" element={<Layouts.UserTab />} />
+          <Route path="/cart" />
+        </Route>
       </Routes>
     </Router>
   </React.StrictMode>,

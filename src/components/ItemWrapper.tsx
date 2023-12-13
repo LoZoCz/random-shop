@@ -47,17 +47,19 @@ const ItemWrapper = () => {
         <img
           src={allImages[imageIndex]}
           alt={`${item?.title} image`}
-          className="rounded-md w-[35rem] aspect-video object-cover"
+          className="rounded-md max-h-[30rem] object-cover shadow-md"
+          height={450}
+          width={800}
         />
         <button
           onClick={handleImageChange}
-          className="bg-sky-400 text-white w-12 aspect-square rounded-full absolute top-1/2 -translate-y-1/2 -left-6"
+          className="bg-sky-400 text-white w-12 aspect-square rounded-full absolute top-1/2 -translate-y-1/2 -left-[4rem]"
         >
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <button
           onClick={handleImageChange}
-          className="bg-sky-400 text-white w-12 aspect-square rounded-full absolute top-1/2 -translate-y-1/2 -right-6"
+          className="bg-sky-400 text-white w-12 aspect-square rounded-full absolute top-1/2 -translate-y-1/2 -right-[4rem]"
         >
           <FontAwesomeIcon icon={faArrowRight} />
         </button>

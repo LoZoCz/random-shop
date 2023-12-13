@@ -19,8 +19,6 @@ const SearchTab = () => {
     });
   }, [query]);
 
-  console.log(searchedItems, query);
-
   return (
     <>
       <Header />
