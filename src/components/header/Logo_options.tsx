@@ -3,15 +3,14 @@ import { Link } from "react-router-dom";
 
 const Logo_options = () => {
   return (
-    <div data-name="logo&options" className="flex gap-16">
-      <Link to={"/"}>
+    <div className="flex gap-16">
+      <Link to={"/random-shop/"}>
         <Logo />
       </Link>
-      <ul data-name="products-options" className="flex items-center gap-4">
+      <ul className="flex items-center gap-4">
         <li>
           <Link
-            to={"/products"}
-            data-name="products-btn"
+            to={"/random-shop/products"}
             className="text-xl font-medium hover:text-pink-200 transition-all"
           >
             All products
@@ -19,8 +18,7 @@ const Logo_options = () => {
         </li>
         <li>
           <Link
-            to={"/categories"}
-            data-name="category-btn"
+            to={"/random-shop/categories"}
             className="text-xl font-medium hover:text-pink-200 transition-all"
           >
             Categories

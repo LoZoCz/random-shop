@@ -6,8 +6,12 @@ import {
   faTruckFast,
   faHandshake,
   faMedal,
+  faArrowRightToBracket,
+  faArrowRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import mockData from "../utils/mockData.json";
+import { useContext } from "react";
+import { AuthContext } from "../layouts/AuthProvider";
 
 export const headerIcons = [
   {
@@ -15,12 +19,22 @@ export const headerIcons = [
     icon: <FontAwesomeIcon icon={faMagnifyingGlass} className="text-2xl" />,
   },
   {
-    name: "user",
+    name: "profile",
     icon: <FontAwesomeIcon icon={faUser} className="text-2xl" />,
   },
   {
     name: "cart",
     icon: <FontAwesomeIcon icon={faCartShopping} className="text-2xl" />,
+  },
+  {
+    name: "login",
+    icon: <FontAwesomeIcon icon={faArrowRightToBracket} className="text-2xl" />,
+  },
+  {
+    name: "logout",
+    icon: (
+      <FontAwesomeIcon icon={faArrowRightFromBracket} className="text-2xl" />
+    ),
   },
 ];
 
@@ -148,3 +162,68 @@ export const mockUserOrders = [
     image: "https://grailpoint.com/wp-content/uploads/2020/06/af1supblacck.jpg",
   },
 ];
+
+export type UserDataTypes = {
+  id: number;
+  username: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  gender: string;
+  image: string;
+  token: string;
+};
+
+export type UserCartTypes = {
+  discountPercentage: number;
+  discountedPrice: number;
+  id: number;
+  price: number;
+  quantity: number;
+  thumbnail: string;
+  title: string;
+  total: number;
+};
+
+export type AuthContextProps = {
+  user: UserDataTypes;
+  userCart: UserCartTypes[];
+  login: (userData: UserDataTypes, userCartData: UserCartTypes[]) => void;
+  logout: () => void;
+  updateUser: (newData: UserDataTypes) => void;
+  updateUserCart: (newItem: productTypes) => void;
+  updateUserCartQuantity: (productId: number, newQuantity: number) => void;
+  deleteItemFromCart: (productId: number) => void;
+};
+
+export const useUserContext = (): AuthContextProps => {
+  const context = useContext(AuthContext);
+
+  if (context === undefined) {
+    throw new Error("useUserContext must be use with a AuthContext");
+  }
+
+  return context;
+};
+
+export const defaultUser = {
+  id: 0,
+  username: "",
+  email: "",
+  firstName: "",
+  lastName: "",
+  gender: "",
+  image: "",
+  token: "",
+};
+
+export const defaultUserCart = {
+  discountPercentage: 0,
+  discountedPrice: 0,
+  id: 0,
+  price: 0,
+  quantity: 0,
+  thumbnail: "",
+  title: "",
+  total: 0,
+};

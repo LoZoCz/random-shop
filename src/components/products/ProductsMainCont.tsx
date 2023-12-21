@@ -70,7 +70,6 @@ const ProductsMainGrid = ({ selectedCategory }: ProductsMainGridProps) => {
 
   return (
     <section
-      data-name="products-section"
       className="grid gap-8 px-40 py-16"
       style={{ gridTemplateRows: "auto 1fr" }}
     >

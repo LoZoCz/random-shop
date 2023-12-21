@@ -40,9 +40,7 @@ body {
   @apply bg-sky-100;
 }
 
-div[data-name="Delivery"]::before,
-div[data-name="Support"]::before,
-div[data-name="Security"]::before {
+.site-info-div::before {
   content: "";
   position: absolute;
   top: -2rem;
@@ -56,17 +54,22 @@ div[data-name="Security"]::before {
   filter: blur(3px);
 }
 
-a[data-name="product"]:hover button[data-name="cart-btn"] {
-  width: 3rem;
-  height: 3rem;
+.product-box:hover button {
+  @apply w-12 h-12;
 }
 
-a[data-name="product"]:hover svg[data-name="cart-icon"] {
+.product-box:hover svg {
   color: rgb(240 249 255);
 }
 
 .main-pad {
-  @apply py-16 px-40;
+  padding: 4rem 10rem;
+
+  @media (max-width: 1024px) {
+    & {
+      padding: 4rem 5rem;
+    }
+  }
 }
 
 input::-webkit-outer-spin-button,
@@ -79,7 +82,7 @@ input::-webkit-inner-spin-button {
   height: 28rem;
 }
 
-.ct-btn[data-name="category-btn"]::after {
+.category-link::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -90,9 +93,43 @@ input::-webkit-inner-spin-button {
   border-radius: 0.375rem;
   filter: blur(3px);
   opacity: 0;
-  transition: all cubic-bezier(0.075, 0.82, 0.165, 1) 300ms;
+  transition: opacity ease-in-out 300ms;
 }
 
-.ct-btn[data-name="category-btn"]:hover::after {
-  opacity: 0.15;
+.category-link:hover::after {
+  opacity: 0.4;
+}
+
+.userTabInput {
+  @apply bg-transparent border-transparent border-b-white border-solid border-4 rounded-md outline-none w-full;
+}
+
+.header-options-links {
+  @apply grid place-items-center gap-1 hover:text-pink-200 transition-all;
+
+  grid-template-rows: 2rem 1fr;
+}
+
+.add-cart-btn {
+  @apply bg-sky-400 text-white px-12 py-2 font-semibold self-start rounded-md hover:bg-pink-500 transition-colors duration-300;
+}
+
+.add-cart-mini-btn {
+  @apply bg-sky-400 hover:bg-pink-400 absolute bottom-4 right-2 w-0 h-0 rounded-full grid place-items-center transition-all;
+}
+
+.delete-item-btn {
+  @apply bg-red-400 text-white w-0 h-8 absolute bottom-[0.35rem] right-2 transition-all duration-300 rounded-sm;
+}
+
+.delete-item-btn svg {
+  @apply opacity-0 transition-all duration-300;
+}
+
+.user-cart-item:hover .delete-item-btn {
+  @apply w-8 bg-red-600;
+}
+
+.user-cart-item:hover .delete-item-btn svg {
+  @apply opacity-100;
 }

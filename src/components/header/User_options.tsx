@@ -1,25 +1,36 @@
 import { Link } from "react-router-dom";
-import { headerIcons } from "../../utils/siteData";
+import { headerIcons, useUserContext } from "../../utils/siteData";
 
 const User_options = () => {
+  const { user, logout } = useUserContext();
+  const webToken = localStorage.getItem("userToken");
+
+  const isLogged = user.token !== webToken;
+
   return (
     <>
-      <div data-name="user-options" className="flex gap-10">
-        <Link
-          to={"/user"}
-          data-name="user-btn"
-          className="grid place-items-center hover:text-pink-200 transition-all"
-        >
-          {headerIcons[1].icon}
-          <p className="capitalize">{headerIcons[1].name}</p>
-        </Link>
-        <button
-          data-name="user-btn"
-          className="grid place-items-center hover:text-pink-200 transition-all"
-        >
-          {headerIcons[2].icon}
-          <p className="capitalize">{headerIcons[2].name}</p>
-        </button>
+      <div className="flex gap-10">
+        {isLogged ? (
+          <Link to={"/random-shop/login"} className="header-options-links">
+            {headerIcons[3].icon}
+            <p className="capitalize leading-4">{headerIcons[3].name}</p>
+          </Link>
+        ) : (
+          <>
+            <Link to={"/random-shop/user"} className="header-options-links">
+              {headerIcons[1].icon}
+              <p className="capitalize leading-4">{headerIcons[1].name}</p>
+            </Link>
+            <button onClick={() => logout()} className="header-options-links">
+              {headerIcons[4].icon}
+              <p className="capitalize leading-4">{headerIcons[4].name}</p>
+            </button>
+            <Link to={"/random-shop/cart"} className="header-options-links">
+              {headerIcons[2].icon}
+              <p className="capitalize leading-4">{headerIcons[2].name}</p>
+            </Link>
+          </>
+        )}
       </div>
     </>
   );

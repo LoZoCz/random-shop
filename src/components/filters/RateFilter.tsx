@@ -25,11 +25,7 @@ const RateFilter = ({ filters, setFilters }: RateFilterProps) => {
             setFilters({ ...filters, rating: newRating });
           }}
         >
-          <FontAwesomeIcon
-            data-name="raiting-filter-btn"
-            icon={faStar}
-            className="text-2xl"
-          />
+          <FontAwesomeIcon icon={faStar} className="text-2xl" />
         </button>,
       );
     }
@@ -37,7 +33,7 @@ const RateFilter = ({ filters, setFilters }: RateFilterProps) => {
   };
 
   return (
-    <div data-name="raiting-filter" className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2">
       <h4 className="text-2xl font-semibold">Raiting</h4>
       <div className="flex gap-2">{renderStars()}</div>
     </div>

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { productTypes } from "../utils/siteData";
+import { productTypes, useUserContext } from "../utils/siteData";
 import { Link } from "react-router-dom";
 
 type ProductsBoxProps = {
@@ -8,11 +8,17 @@ type ProductsBoxProps = {
 };
 
 const ProductBox = ({ product }: ProductsBoxProps) => {
+  const { updateUserCart } = useUserContext();
+  const handleClick = (e: React.FormEvent, newItem: productTypes) => {
+    e.preventDefault();
+
+    updateUserCart(newItem);
+  };
+
   return (
     <Link
-      to={`/product/${product.id}`}
-      data-name="product"
-      className="rounded-md overflow-hidden p-4 border-sky-300 border-solid h-full"
+      to={`/random-shop/product/${product.id}`}
+      className="rounded-md overflow-hidden p-4 border-sky-300 border-solid h-full product-box"
       style={{ borderWidth: "1px" }}
     >
       <img
@@ -26,18 +32,10 @@ const ProductBox = ({ product }: ProductsBoxProps) => {
         <p className="pb-2">{product.brand}</p>
         <p className="text-xl">{product.price} €</p>
         <button
-          data-name="cart-btn"
-          onClick={(e) => {
-            e.preventDefault();
-            console.log("Added to cart");
-          }}
-          className="bg-sky-400 hover:bg-pink-400 absolute bottom-4 right-2 w-0 h-0 rounded-full grid place-items-center transition-all"
+          onClick={(e) => handleClick(e, product)}
+          className="add-cart-mini-btn"
         >
-          <FontAwesomeIcon
-            data-name="cart-icon"
-            icon={faCartShopping}
-            className="text-transparent"
-          />
+          <FontAwesomeIcon icon={faCartShopping} className="text-transparent" />
         </button>
       </div>
     </Link>

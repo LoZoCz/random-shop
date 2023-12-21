@@ -20,13 +20,8 @@ const FilterNavbar = ({ filters, setFilters }: FilternavbarProps) => {
   };
 
   return (
-    <nav
-      data-name="products-filters"
-      className="flex flex-col gap-8 h-fit justify-center-center"
-    >
-      <h1 data-name="products-title" className="text-4xl font-bold">
-        Filters
-      </h1>
+    <nav className="flex flex-col gap-8 h-fit justify-center-center">
+      <h1 className="text-4xl font-bold">Filters</h1>
       <div className="flex gap-8 items-center bg-sky-100">
         <BrandFilter filters={filters} setFilters={setFilters} />
         <StockfFilter filters={filters} setFilters={setFilters} />

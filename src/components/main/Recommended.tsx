@@ -18,16 +18,9 @@ const Recommended = () => {
   }, []);
 
   return (
-    <section
-      data-name="recommended-items"
-      className="grid"
-      style={{ gridTemplateRows: "auto 1fr" }}
-    >
-      <h1 data-name="recommended-title" className="text-4xl font-bold my-8">
-        Recommended items
-      </h1>
+    <section className="grid" style={{ gridTemplateRows: "auto 1fr" }}>
+      <h1 className="text-4xl font-bold my-8">Recommended items</h1>
       <div
-        data-name="items-box"
         className="grid grid-cols-5 gap-12"
         style={{ gridTemplateRows: "28rem" }}
       >

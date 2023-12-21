@@ -2,7 +2,9 @@ import TextInp from "./TextInp";
 import PassInp from "./PassInp";
 import LoginBtn from "./LoginBtn";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useUserContext } from "../../utils/siteData";
 
 type LoginFormTypes = {
   showPassword: boolean;
@@ -10,6 +12,10 @@ type LoginFormTypes = {
 };
 
 const LoginForm = ({ showPassword, setShowPassword }: LoginFormTypes) => {
+  const { login } = useUserContext();
+
+  const navigate = useNavigate();
+
   const [userLoginData, setUserLoginData] = useState({
     username: "",
     password: "",
@@ -25,7 +31,23 @@ const LoginForm = ({ showPassword, setShowPassword }: LoginFormTypes) => {
   const handleSubmitLogin = (e: React.FormEvent) => {
     e.preventDefault();
 
-    console.log(userLoginData);
+    const { username, password } = userLoginData;
+
+    if (username && password) {
+      axios
+        .post("http://localhost:5000/login", {
+          username: username,
+          password: password,
+        })
+        .then((response) => {
+          login(response.data.userData, response.data.userCart);
+
+          localStorage.setItem("userToken", response.data.userData.token);
+
+          navigate("/random-shop/user");
+        })
+        .catch((error) => console.log(error));
+    }
   };
 
   return (
@@ -47,7 +69,7 @@ const LoginForm = ({ showPassword, setShowPassword }: LoginFormTypes) => {
       </div>
       <LoginBtn />
       <Link
-        to={"/register"}
+        to={"/random-shop/register"}
         className="hover:text-white underline transition-all cursor-pointer"
       >
         New users

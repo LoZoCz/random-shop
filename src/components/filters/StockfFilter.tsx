@@ -7,7 +7,7 @@ type StockfFilterProps = {
 
 const StockfFilter = ({ filters, setFilters }: StockfFilterProps) => {
   return (
-    <div data-name="stock-filter" className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2">
       <h4 className="text-2xl font-semibold">Number of stocks</h4>
       <div>
         <input

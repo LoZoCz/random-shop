@@ -9,7 +9,6 @@ type ProductsGridProps = {
 const ProductsGrid = ({ prodData }: ProductsGridProps) => {
   return (
     <div
-      data-name="products-box"
       className={`grid grid-cols-${prodData.products.length ? 5 : 1} gap-6 ${
         prodData.products.length === 0 ? "h-96 place-items-center" : "h-full"
       }`}

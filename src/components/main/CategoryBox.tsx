@@ -7,9 +7,8 @@ type CategoryBoxProps = {
 const CategoryBox = ({ category }: CategoryBoxProps) => {
   return (
     <Link
-      to={`/categories/${category}`}
-      data-name="category-btn"
-      className="ct-btn aspect-video grid place-items-center rounded-md relative"
+      to={`/random-shop/categories/${category}`}
+      className="category-link aspect-video grid place-items-center rounded-md relative"
       key={category}
     >
       <img

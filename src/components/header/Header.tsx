@@ -5,10 +5,7 @@ import SearchBar from "./SearchBar";
 
 const Header = () => {
   return (
-    <header
-      data-name="main-head"
-      className="bg-sky-400 text-white flex justify-between items-center px-8 py-8"
-    >
+    <header className="bg-sky-400 text-white flex justify-between items-center h-28 px-8">
       <Logo_options />
       <SearchBar />
       <User_options />

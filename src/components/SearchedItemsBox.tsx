@@ -19,7 +19,6 @@ const SearchedItemsBox = ({ query, searchedItems }: SearchedItemsBoxProps) => {
         {searchedItems.length === 1 ? "result" : "results"}
       </h1>
       <div
-        data-name="serached-box"
         className={`grid grid-cols-${searchedItems.length ? 5 : 1} gap-6 ${
           searchedItems.length === 0 ? "h-96 place-items-center" : "h-full"
         }`}

@@ -2,12 +2,9 @@ import Logo from "../Logo";
 
 const Footer = () => {
   return (
-    <footer
-      data-name="main-foot"
-      className="bg-sky-400 text-white flex justify-between items-center px-8 py-8"
-    >
+    <footer className="bg-sky-400 text-white flex justify-between items-center px-8 py-8">
       <Logo />
-      <ul data-name="contact" className="flex gap-8">
+      <ul className="flex gap-8">
         <li>
           <a href="#" className="text-md hover:underline">
             Instagram

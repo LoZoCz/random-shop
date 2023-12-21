@@ -173,7 +173,7 @@ const RegisterForm = ({ showPassword, setShowPassword }: RegisterFormTypes) => {
       )}
       <LoginBtn />
       <Link
-        to={"/login"}
+        to={"/random-shop/login"}
         className="hover:text-white underline transition-all cursor-pointer"
       >
         You already have an anccount?

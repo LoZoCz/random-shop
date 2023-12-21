@@ -9,7 +9,7 @@ const SearchBar = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate({ pathname: `/search`, search: `?q=${userQuery}` });
+    navigate({ pathname: `/random-shop/search`, search: `?q=${userQuery}` });
   };
 
   return (

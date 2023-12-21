@@ -4,11 +4,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 const StarBtn = () => {
   return (
     <button>
-      <FontAwesomeIcon
-        data-name="raiting-filter-btn"
-        icon={faStar}
-        className="text-2xl"
-      />
+      <FontAwesomeIcon icon={faStar} className="text-2xl" />
     </button>
   );
 };

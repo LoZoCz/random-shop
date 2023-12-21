@@ -1,14 +1,16 @@
 import express from "express";
 import axios from "axios";
 import cors from "cors";
+import bodyParser from "body-parser";
 
 const port = 5000;
 
 const app = express();
 
-// app.use(express.static("src"));
-
 app.use(cors());
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.get("/categories", async (req, res) => {
   try {
@@ -104,6 +106,59 @@ app.get("/product/:id", async (req, res) => {
     console.error("Błąd pobierania danych:", error);
     res.status(500).json({ error: "Wystąpił błąd pobierania danych" });
   }
+});
+
+app.post("/login", (req, res) => {
+  const { username, password } = req.body;
+
+  axios
+    .get(`https://dummyjson.com/users/search?q=${username}`)
+    .then((response) => {
+      const searchedUser = response.data.users[0];
+
+      const isUserLogged =
+        searchedUser.username === username &&
+        searchedUser.password === password;
+
+      if (isUserLogged) {
+        axios
+          .post("https://dummyjson.com/auth/login", {
+            username: username,
+            password: password,
+          })
+          .then((userDataRes) => {
+            axios
+              .get(`https://dummyjson.com/carts/user/${searchedUser.id}`)
+              .then((userCartRes) => {
+                const userCarts = userCartRes.data.carts;
+
+                if (userCarts && userCarts.length > 0) {
+                  res.status(200).json({
+                    userData: userDataRes.data,
+                    userCart: userCarts[0].products,
+                  });
+                } else {
+                  res.status(200).json({
+                    userData: userDataRes.data,
+                    userCart: [],
+                  });
+                }
+
+                //! dodanie tokenu JWT
+              });
+          })
+          .catch((error) => {
+            console.error(error);
+            res.status(500).json({ error: "Wystąpił błąd podczas logowania" });
+          });
+      } else {
+        res.status(401).json({ error: "Niepoprawne dane logowania" });
+      }
+    })
+    .catch((error) => {
+      console.log(error);
+      res.status(500).json({ error: "Wystąpił błąd podczas logowania" });
+    });
 });
 
 app.listen(port, () => {

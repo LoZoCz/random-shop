@@ -7,7 +7,7 @@ type PriceFilterProps = {
 
 const PriceFilter = ({ filters, setFilters }: PriceFilterProps) => {
   return (
-    <div data-name="price-filter" className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2">
       <h4 className="text-2xl font-semibold">Price (€)</h4>
       <div>
         <input

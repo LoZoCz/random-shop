@@ -1,5 +1,6 @@
 {
   "name": "ecommercesite",
+  "homepage": "https://LoZoCz.github.io/random-shop",
   "proxy": "http://localhost:5000",
   "private": true,
   "version": "0.0.0",
@@ -31,6 +32,7 @@
     "@vitejs/plugin-react-swc": "^3.3.2",
     "autoprefixer": "^10.4.16",
     "axios": "^1.5.1",
+    "body-parser": "^1.20.2",
     "cors": "^2.8.5",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
