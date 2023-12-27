@@ -1,6 +1,6 @@
-import { siteInfo } from "../../utils/siteData";
+import { siteInfo, useUserContext } from "../../utils/siteData";
 const SiteInfo = () => {
-  // const { scrWidth } = useUserContext();
+  const { scrWidth } = useUserContext();
 
   return (
     <section className="flex gap-16 place-items-center text-slate-900 px-8 py-12">
