@@ -1,12 +1,15 @@
 import ProductBox from "./ProductBox";
-import { dataTypes } from "../utils/siteData";
-import NoResult from "./NoResult";
+import { dataTypes } from "../../utils/siteData";
+import NoResult from "../loadingElements/NoResult";
+import Loader from "../loadingElements/Loader";
 
 type ProductsGridProps = {
   prodData: dataTypes;
+  loading: boolean;
+  dataLoaded: boolean;
 };
 
-const ProductsGrid = ({ prodData }: ProductsGridProps) => {
+const ProductsGrid = ({ prodData, loading, dataLoaded }: ProductsGridProps) => {
   return (
     <div
       className={`grid grid-cols-${prodData.products.length ? 5 : 1} gap-6 ${
@@ -20,7 +23,9 @@ const ProductsGrid = ({ prodData }: ProductsGridProps) => {
         }, 30rem)`,
       }}
     >
-      {prodData.products.length ? (
+      {loading && !dataLoaded ? (
+        <Loader />
+      ) : prodData.products.length > 0 ? (
         prodData.products.map((product, i) => (
           <ProductBox key={i} product={product} />
         ))

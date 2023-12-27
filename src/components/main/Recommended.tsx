@@ -1,10 +1,12 @@
-import ProductBox from "../ProductBox";
+import ProductBox from "../products/ProductBox";
 import { useState, useEffect } from "react";
-import { productTypes } from "../../utils/siteData";
+import { productTypes, useUserContext } from "../../utils/siteData";
 import axios from "axios";
+import ProductSkeletonLoading from "../loadingElements/ProductSkeletonLoading";
 
 const Recommended = () => {
   const [recommended, setRecommended] = useState<productTypes[] | undefined>();
+  const { scrWidth } = useUserContext();
 
   useEffect(() => {
     axios
@@ -17,20 +19,26 @@ const Recommended = () => {
       });
   }, []);
 
+  const isCentered = scrWidth < 1650 ? "justify-start" : "justify-center";
+  const isScrollable = scrWidth < 1650 ? "overflow-x-scroll" : "";
+
   return (
     <section className="grid" style={{ gridTemplateRows: "auto 1fr" }}>
       <h1 className="text-4xl font-bold my-8">Recommended items</h1>
       <div
-        className="grid grid-cols-5 gap-12"
-        style={{ gridTemplateRows: "28rem" }}
+        className={`grid gap-12 ${isScrollable} ${isCentered}`}
+        style={{
+          gridTemplateRows: "28rem",
+          gridTemplateColumns: "repeat(5, 18rem)",
+        }}
       >
-        {recommended !== undefined ? (
-          recommended.map((product, i) => (
-            <ProductBox key={i} product={product} />
-          ))
-        ) : (
-          <p>Loading...</p>
-        )}
+        {recommended !== undefined
+          ? recommended.map((product, i) => (
+              <ProductBox key={i} product={product} />
+            ))
+          : Array.from({ length: 5 }).map((_, i) => (
+              <ProductSkeletonLoading key={i} />
+            ))}
       </div>
     </section>
   );

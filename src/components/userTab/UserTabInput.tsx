@@ -32,6 +32,7 @@ const UserTabInput = ({
       <p>{label}</p>
       <input
         type="text"
+        name={label + "-inp"}
         value={inputData}
         onChange={(e) => handleUserData(e.target.value)}
         className="userTabInput"

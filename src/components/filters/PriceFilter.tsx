@@ -12,6 +12,7 @@ const PriceFilter = ({ filters, setFilters }: PriceFilterProps) => {
       <div>
         <input
           type="number"
+          name="price-inp"
           className="outline-none rounded-sm"
           value={filters?.price}
           onChange={(e) => setFilters({ ...filters, price: e.target.value })}

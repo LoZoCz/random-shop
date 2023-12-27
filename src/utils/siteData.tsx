@@ -194,6 +194,8 @@ export type AuthContextProps = {
   updateUserCart: (newItem: productTypes) => void;
   updateUserCartQuantity: (productId: number, newQuantity: number) => void;
   deleteItemFromCart: (productId: number) => void;
+  scrWidth: number;
+  setScrWidth: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const useUserContext = (): AuthContextProps => {
@@ -226,4 +228,8 @@ export const defaultUserCart = {
   thumbnail: "",
   title: "",
   total: 0,
+};
+
+export const isTouchDevice = () => {
+  return "ontouchstart" in window || navigator.maxTouchPoints > 0;
 };

@@ -1,6 +1,6 @@
 import { useUserContext } from "../../utils/siteData";
 import UserImage from "../../components/userTab/UserImage";
-import UserOrders from "../../components/userTab/UserOrders";
+import UserOrders from "../userCart/UserOrders";
 import UserTabForm from "./UserTabForm";
 
 const UserTabMainCont = () => {

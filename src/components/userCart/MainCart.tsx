@@ -32,5 +32,3 @@ const MainCart = () => {
 };
 
 export default MainCart;
-
-//! dodaj formularz wykanczania zamowienia

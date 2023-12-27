@@ -12,6 +12,7 @@ const StockfFilter = ({ filters, setFilters }: StockfFilterProps) => {
       <div>
         <input
           type="number"
+          name="stock-inp"
           className="outline-none rounded-sm"
           value={filters.stock}
           onChange={(e) => setFilters({ ...filters, stock: e.target.value })}

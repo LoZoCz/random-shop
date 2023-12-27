@@ -4,6 +4,7 @@ import "./scss/index.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import * as Layouts from "./layouts/import";
 import { AuthProvider } from "./layouts/AuthProvider";
+import LogoutOnClose from "./safety/LogoutOnClose";
 
 ReactDOM.createRoot(document.getElementById("main-cont")!).render(
   <React.StrictMode>
@@ -33,6 +34,13 @@ ReactDOM.createRoot(document.getElementById("main-cont")!).render(
           </Route>
         </Routes>
       </Router>
+      <LogoutOnClose />
     </AuthProvider>
   </React.StrictMode>,
 );
+
+//DONE 1 skeleton loading dla elementow z api
+
+//TODO 2 responsywnosc strony
+
+//? moze dodac ciemny tryb

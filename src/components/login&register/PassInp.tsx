@@ -39,6 +39,7 @@ const PassInp = ({
       <div className="relative ">
         <input
           type={showPassword ? "text" : "password"}
+          name="password-inp"
           className="w-full text-2xl rounded-md outline-none p-1 focus:outline focus:outline-1 focus:outline-pink-400 transition-all"
           placeholder="..."
           value={inputValue}

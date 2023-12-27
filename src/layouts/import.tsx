@@ -6,5 +6,5 @@ export { default as SearchTab } from "./SearchTab";
 export { default as ItemView } from "./ItemView";
 export { default as Login } from "./Login";
 export { default as Register } from "./Register";
-export { default as ProtectedRoutes } from "./ProtectedRoutes";
+export { default as ProtectedRoutes } from "../safety/ProtectedRoutes";
 export { default as UserCart } from "./UserCart";

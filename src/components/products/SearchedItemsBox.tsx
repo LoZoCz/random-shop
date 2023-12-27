@@ -1,13 +1,21 @@
-import ProductBox from "../components/ProductBox";
-import NoResult from "../components/NoResult";
-import { productTypes } from "../utils/siteData";
+import ProductBox from "./ProductBox";
+import NoResult from "../loadingElements/NoResult";
+import { productTypes } from "../../utils/siteData";
+import Loader from "../loadingElements/Loader";
 
 type SearchedItemsBoxProps = {
   query: string | null;
   searchedItems: productTypes[];
+  loading: boolean;
+  dataLoaded: boolean;
 };
 
-const SearchedItemsBox = ({ query, searchedItems }: SearchedItemsBoxProps) => {
+const SearchedItemsBox = ({
+  query,
+  searchedItems,
+  loading,
+  dataLoaded,
+}: SearchedItemsBoxProps) => {
   return (
     <section
       className="grid gap-8 px-40 py-16"
@@ -30,7 +38,9 @@ const SearchedItemsBox = ({ query, searchedItems }: SearchedItemsBoxProps) => {
           }, 30rem)`,
         }}
       >
-        {searchedItems.length ? (
+        {loading && !dataLoaded ? (
+          <Loader />
+        ) : searchedItems.length > 0 ? (
           searchedItems.map((product, i) => (
             <ProductBox key={i} product={product} />
           ))

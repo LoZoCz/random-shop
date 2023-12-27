@@ -4,7 +4,7 @@ import SiteInfo from "./SiteInfo";
 
 const MainHome = () => {
   return (
-    <main className="grid grid-rows-3 gap-24 justify-center main-pad">
+    <main className="grid grid-rows-3 gap-24 justify-center py-16 px-4 2xl:px-24 xl:px-16">
       <Recommended />
       <ProductFilters />
       <SiteInfo />

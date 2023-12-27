@@ -14,11 +14,12 @@ const SearchBar = () => {
 
   return (
     <form
-      className="bg-sky-400 rounded-md flex gap-8 w-1/3"
+      className="bg-sky-400 rounded-md flex gap-8 w-1/3 search-bar"
       onSubmit={(e) => handleSubmit(e)}
     >
       <input
         type="text"
+        name="search-bar"
         placeholder="Search..."
         className="outline-none rounded-md px-2 py-1 text-slate-950 text-2xl flex-1"
         value={userQuery}

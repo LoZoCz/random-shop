@@ -1,19 +1,24 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { productTypes } from "../utils/siteData";
+import { productTypes, useUserContext } from "../../utils/siteData";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowRight,
   faArrowLeft,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
+import ItemWrapperSkeletoLoading from "../loadingElements/ItemWrapperSkeletoLoading";
 
 const ItemWrapper = () => {
   const { id } = useParams();
   const [item, setItem] = useState({} as productTypes);
   const [imageIndex, setImageIndex] = useState(0);
   const [allImages, setAllImages] = useState<string[]>([]);
+  const { updateUserCart } = useUserContext();
+
+  const isLogged = localStorage.getItem("userToken");
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -38,11 +43,19 @@ const ItemWrapper = () => {
     }
   };
 
-  const handleClick = (e: React.FormEvent) => {
+  const handleClick = (e: React.FormEvent, newItem: productTypes) => {
     e.preventDefault();
 
-    console.log("added to cart");
+    if (!isLogged) {
+      navigate("/random-shop/login");
+    } else {
+      updateUserCart(newItem);
+    }
   };
+
+  if (!Object.keys(item).length) {
+    return <ItemWrapperSkeletoLoading />;
+  }
 
   return (
     <section
@@ -87,7 +100,7 @@ const ItemWrapper = () => {
           </p>
           <p className="text-xl">{item?.stock} stocks</p>
         </div>
-        <button onClick={(e) => handleClick(e)} className="add-cart-btn">
+        <button onClick={(e) => handleClick(e, item)} className="add-cart-btn">
           Add to cart
         </button>
       </div>

@@ -29,6 +29,7 @@ const TextInp = ({
       <p className="text-white capitalize">{label}</p>
       <input
         type="text"
+        name={label + "-inp"}
         className="w-full text-2xl rounded-md outline-none p-1 focus:outline focus:outline-1 focus:outline-pink-400 transition-all"
         placeholder="..."
         value={inputValue}

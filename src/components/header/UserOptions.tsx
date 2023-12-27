@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { headerIcons, useUserContext } from "../../utils/siteData";
 
-const User_options = () => {
+const UserOptions = () => {
   const { user, logout } = useUserContext();
   const webToken = localStorage.getItem("userToken");
 
@@ -36,4 +36,4 @@ const User_options = () => {
   );
 };
 
-export default User_options;
+export default UserOptions;

@@ -20,7 +20,6 @@ const RateFilter = ({ filters, setFilters }: RateFilterProps) => {
               : "text-slate-600"
           } transition-all`}
           onClick={() => {
-            // Dodaj walidację, aby rating zawsze był większy lub równy 1
             const newRating = Math.max(i + 1, 1);
             setFilters({ ...filters, rating: newRating });
           }}

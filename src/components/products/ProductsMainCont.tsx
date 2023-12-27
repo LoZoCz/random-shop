@@ -1,5 +1,5 @@
 import FilterNavbar from "../filters/FilterNavbar";
-import ProductsGrid from "../ProductsGrid";
+import ProductsGrid from "./ProductsGrid";
 import { useState, useEffect } from "react";
 import { filtersBody, productTypes, dataTypes } from "../../utils/siteData";
 import axios from "axios";
@@ -23,43 +23,49 @@ const ProductsMainGrid = ({ selectedCategory }: ProductsMainGridProps) => {
     limit: 0,
   });
 
+  const [loading, setLoading] = useState(false);
+  const [dataLoaded, setDataLoaded] = useState(false);
+
   useEffect(() => {
-    setTimeout(() => {
-      const filterFunction = (prod: dataTypes) => {
-        const filtered = prod.products.filter((product: productTypes) => {
-          return (
-            (filters.brand === "" || product.brand === filters.brand) &&
-            (filters.price === "" || product.price >= Number(filters.price)) &&
-            (filters.stock === "" || product.stock >= Number(filters.stock)) &&
-            (!filters.rating || product.rating >= filters.rating)
-          );
-        });
+    const filterFunction = (prod: dataTypes) => {
+      const filtered = prod.products.filter((product: productTypes) => {
+        return (
+          (filters.brand === "" || product.brand === filters.brand) &&
+          (filters.price === "" || product.price >= Number(filters.price)) &&
+          (filters.stock === "" || product.stock >= Number(filters.stock)) &&
+          (!filters.rating || product.rating >= filters.rating)
+        );
+      });
 
-        return {
-          products: filtered,
-          total: filtered.length,
-          skip: 0,
-          limit: filtered.length,
-        };
+      return {
+        products: filtered,
+        total: filtered.length,
+        skip: 0,
+        limit: filtered.length,
       };
+    };
 
-      let apiUrl = "http://localhost:5000/products";
+    let apiUrl = "http://localhost:5000/products";
 
-      if (selectedCategory) {
-        apiUrl = `http://localhost:5000/products/category/${selectedCategory}`;
-      }
+    if (selectedCategory) {
+      apiUrl = `http://localhost:5000/products/category/${selectedCategory}`;
+    }
 
-      axios
-        .get(apiUrl)
-        .then((response) => {
-          const filteredData = filterFunction(response.data);
+    setLoading(true);
 
-          setProductsData(filteredData);
-        })
-        .catch((error) => {
-          console.error("Błąd pobierania danych:", error);
-        });
-    }, 300);
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        const filteredData = filterFunction(response.data);
+        setProductsData(filteredData);
+        setDataLoaded(true);
+      })
+      .catch((error) => {
+        console.error("Błąd pobierania danych:", error);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
   }, [
     filters.brand,
     filters.price,
@@ -74,7 +80,11 @@ const ProductsMainGrid = ({ selectedCategory }: ProductsMainGridProps) => {
       style={{ gridTemplateRows: "auto 1fr" }}
     >
       <FilterNavbar filters={filters} setFilters={setFilters} />
-      <ProductsGrid prodData={productsData} />
+      <ProductsGrid
+        prodData={productsData}
+        loading={loading}
+        dataLoaded={dataLoaded}
+      />
     </section>
   );
 };

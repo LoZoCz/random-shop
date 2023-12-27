@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
 import {
   UserDataTypes,
   UserCartTypes,
@@ -94,6 +94,24 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
     });
   };
 
+  const [scrWidth, setScrWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const newWidth = window.innerWidth;
+
+      if (scrWidth !== newWidth) {
+        setScrWidth(newWidth);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [scrWidth]);
+
   return (
     <AuthContext.Provider
       value={{
@@ -105,6 +123,8 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         updateUserCart,
         updateUserCartQuantity,
         deleteItemFromCart,
+        scrWidth,
+        setScrWidth,
       }}
     >
       {children}

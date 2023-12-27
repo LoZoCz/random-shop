@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 $grad-clr: linear-gradient(
   -45deg,
@@ -40,6 +40,34 @@ body {
   @apply bg-sky-100;
 }
 
+body::-webkit-scrollbar {
+  @apply w-4;
+}
+
+body::-webkit-scrollbar-track {
+  @apply bg-slate-300;
+}
+
+body::-webkit-scrollbar-thumb {
+  @apply bg-sky-800 rounded-sm;
+}
+
+.site-info-div {
+  @apply bg-slate-100 flex-1 relative rounded-md p-8 flex flex-col gap-4 items-start h-80;
+
+  &:nth-child(1) {
+    align-self: start;
+  }
+
+  &:nth-child(2) {
+    align-self: center;
+  }
+
+  &:nth-child(3) {
+    align-self: end;
+  }
+}
+
 .site-info-div::before {
   content: "";
   position: absolute;
@@ -54,22 +82,8 @@ body {
   filter: blur(3px);
 }
 
-.product-box:hover button {
-  @apply w-12 h-12;
-}
-
 .product-box:hover svg {
   color: rgb(240 249 255);
-}
-
-.main-pad {
-  padding: 4rem 10rem;
-
-  @media (max-width: 1024px) {
-    & {
-      padding: 4rem 5rem;
-    }
-  }
 }
 
 input::-webkit-outer-spin-button,
@@ -111,11 +125,11 @@ input::-webkit-inner-spin-button {
 }
 
 .add-cart-btn {
-  @apply bg-sky-400 text-white px-12 py-2 font-semibold self-start rounded-md hover:bg-pink-500 transition-colors duration-300;
+  @apply bg-sky-400 text-white px-12 py-2 font-semibold self-center rounded-md hover:bg-pink-500 transition-colors duration-300;
 }
 
 .add-cart-mini-btn {
-  @apply bg-sky-400 hover:bg-pink-400 absolute bottom-4 right-2 w-0 h-0 rounded-full grid place-items-center transition-all;
+  @apply bg-sky-400 hover:bg-pink-400 absolute bottom-4 right-2 rounded-full grid place-items-center transition-all;
 }
 
 .delete-item-btn {
@@ -132,4 +146,33 @@ input::-webkit-inner-spin-button {
 
 .user-cart-item:hover .delete-item-btn svg {
   @apply opacity-100;
+}
+
+.checkout-btn {
+  @apply px-4 border-white border-2 rounded-md font-semibold text-white py-2 hover:bg-white hover:text-sky-800 transition-all duration-300;
+}
+
+@media screen and (max-width: 1350px) {
+  .header {
+    position: relative;
+  }
+
+  .headerOptions {
+    position: absolute;
+    bottom: -240%;
+    right: 1%;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 3rem;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    width: fit-content;
+    z-index: 1000;
+    @apply bg-sky-400;
+
+    .search-bar {
+      align-self: start;
+    }
+  }
 }

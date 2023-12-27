@@ -9,6 +9,7 @@ const BrandFilter = ({ filters, setFilters }: BrandFilterProps) => {
     <div className="flex flex-col gap-2">
       <h4 className="text-2xl font-semibold">Brand</h4>
       <select
+        name="brand-select"
         value={filters.brand}
         onChange={(e) => setFilters({ ...filters, brand: e.target.value })}
       >

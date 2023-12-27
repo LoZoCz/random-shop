@@ -143,8 +143,6 @@ app.post("/login", (req, res) => {
                     userCart: [],
                   });
                 }
-
-                //! dodanie tokenu JWT
               });
           })
           .catch((error) => {
