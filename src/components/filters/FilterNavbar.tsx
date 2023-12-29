@@ -22,7 +22,7 @@ const FilterNavbar = ({ filters, setFilters }: FilternavbarProps) => {
   return (
     <nav className="flex flex-col gap-8 h-fit justify-center-center">
       <h1 className="text-4xl font-bold">Filters</h1>
-      <div className="flex gap-8 items-center bg-sky-100">
+      <div className="grid gap-4 bg-sky-100 md:flex md:gap-8 md:items-center md:flex-wrap">
         <BrandFilter filters={filters} setFilters={setFilters} />
         <StockfFilter filters={filters} setFilters={setFilters} />
         <PriceFilter filters={filters} setFilters={setFilters} />

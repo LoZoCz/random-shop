@@ -8,6 +8,15 @@ const ProductFilters = () => {
   const { scrWidth } = useUserContext();
   const [categories, setCategories] = useState<string[]>([]);
 
+  const classes = `grid gap-2 items-center sm:gap-8 grid-cols-${
+    scrWidth < 400 ? 1 : scrWidth < 900 ? 2 : 4
+  }`;
+
+  const isThin =
+    scrWidth < 400
+      ? categories.filter((_, i) => i < 4)
+      : categories.filter((_, i) => i < 8);
+
   useEffect(() => {
     axios
       .get("http://localhost:5000/categories")
@@ -19,17 +28,10 @@ const ProductFilters = () => {
       });
   }, []);
 
-  const filteredCategories =
-    scrWidth < 900 ? categories.slice(0, 6) : categories.slice(0, 8);
-
-  const classes = `grid gap-8 items-center ${
-    scrWidth < 900 ? "grid-cols-3" : "grid-cols-4"
-  }`;
-
   return (
     <section className={classes}>
       {categories.length !== 0
-        ? filteredCategories.map((category, i) => {
+        ? isThin.map((category, i) => {
             return <CategoryBox key={i} category={category} />;
           })
         : Array.from({ length: 8 }).map((_, i) => (

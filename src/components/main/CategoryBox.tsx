@@ -16,7 +16,7 @@ const CategoryBox = ({ category }: CategoryBoxProps) => {
         alt="filter-image"
         className="w-3/4 aspect-video rounded-lg drop-shadow-xl"
       />
-      <h3 className="text-3xl font-medium text-slate-900 capitalize drop-shadow-xl">
+      <h3 className="text-3xl font-medium text-slate-900 capitalize drop-shadow-xl text-center">
         {category.replace("-", " ")}
       </h3>
     </Link>

@@ -16,7 +16,7 @@ const Header = () => {
   const showBars = scrWidth < 1350 && scrWidth !== 0;
 
   return (
-    <header className="bg-sky-400 text-white flex gap-6 justify-between items-center h-28 px-8 relative">
+    <header className="bg-sky-400 text-white flex gap-6 justify-between items-center h-28 relative px-4 sm:px-8">
       <Link to={"/random-shop/"}>
         <Logo />
       </Link>

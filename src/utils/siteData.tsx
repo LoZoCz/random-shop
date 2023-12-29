@@ -44,21 +44,25 @@ export const siteInfo = [
     title: "Fast Delivery",
     paragraph:
       "Our products are delivered at lightning speed. Thanks to our efficient logistics process, you can enjoy your purchases in no time.",
-    icon: <FontAwesomeIcon icon={faTruckFast} className="text-5xl" />,
+    icon: (
+      <FontAwesomeIcon icon={faTruckFast} className="text-3xl sm:text-5xl" />
+    ),
   },
   {
     dataName: "Support",
     title: "Secure Deliveries",
     paragraph:
-      "Your order is our priority. That's why we make every effort to deliver it in pristine condition. Your products are carefully packaged and secured to arrive at your doorstep in perfect shape..",
-    icon: <FontAwesomeIcon icon={faHandshake} className="text-5xl" />,
+      "We prioritize your order and strive to deliver it securely, ensuring your products reach you in perfect condition.",
+    icon: (
+      <FontAwesomeIcon icon={faHandshake} className="text-3xl sm:text-5xl" />
+    ),
   },
   {
     dataName: "Security",
     title: "Customer Support",
     paragraph:
-      "Our friendly and knowledgeable customer support is always ready to assist. If you have questions, concerns, or need assistance, get in touch with us. We're here to help!",
-    icon: <FontAwesomeIcon icon={faMedal} className="text-5xl" />,
+      "Our customer support is ready to assist you with any questions or concerns - we're here to help!",
+    icon: <FontAwesomeIcon icon={faMedal} className="text-3xl sm:text-5xl" />,
   },
 ];
 

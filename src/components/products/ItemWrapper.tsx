@@ -26,7 +26,7 @@ const ItemWrapper = () => {
       .then((response) => {
         setItem(response.data);
         setAllImages(() => {
-          const arr = [response.data.thumbnail, ...response.data.images];
+          const arr = [...response.data.images];
           return arr;
         });
       })
@@ -35,12 +35,14 @@ const ItemWrapper = () => {
       });
   }, [id]);
 
-  const handleImageChange = () => {
-    if (imageIndex === allImages.length - 1) {
-      setImageIndex(0);
-    } else {
-      setImageIndex(imageIndex + 1);
-    }
+  const handleImageChange = (direction: "prev" | "next") => {
+    setImageIndex((prev) => {
+      if (direction === "prev") {
+        return prev === 0 ? allImages.length - 1 : prev - 1;
+      } else {
+        return prev === allImages.length - 1 ? 0 : prev + 1;
+      }
+    });
   };
 
   const handleClick = (e: React.FormEvent, newItem: productTypes) => {
@@ -59,7 +61,7 @@ const ItemWrapper = () => {
 
   return (
     <section
-      className="grid place-items-center grid-cols-2 gap-6 px-32 py-16"
+      className="grid place-items-center grid-cols-2 gap-6 px-4 py-16 min-[1600px]:px-32"
       style={{ height: "calc(100vh - 7rem)" }}
     >
       <div className="flex justify-center items-center relative">
@@ -68,16 +70,16 @@ const ItemWrapper = () => {
           alt={`${item?.title} image`}
           className="rounded-md max-h-[30rem] object-cover shadow-md"
           height={450}
-          width={800}
+          width={650}
         />
         <button
-          onClick={handleImageChange}
+          onClick={() => handleImageChange("prev")}
           className="bg-sky-400 text-white w-12 aspect-square rounded-full absolute top-1/2 -translate-y-1/2 -left-[4rem]"
         >
           <FontAwesomeIcon icon={faArrowLeft} />
         </button>
         <button
-          onClick={handleImageChange}
+          onClick={() => handleImageChange("next")}
           className="bg-sky-400 text-white w-12 aspect-square rounded-full absolute top-1/2 -translate-y-1/2 -right-[4rem]"
         >
           <FontAwesomeIcon icon={faArrowRight} />

@@ -14,14 +14,14 @@ const SearchBar = () => {
 
   return (
     <form
-      className="bg-sky-400 rounded-md flex gap-8 w-1/3 search-bar"
+      className="bg-sky-400 rounded-md flex gap-8 w-[90%] search-bar sm:w-1/3"
       onSubmit={(e) => handleSubmit(e)}
     >
       <input
         type="text"
         name="search-bar"
         placeholder="Search..."
-        className="outline-none rounded-md px-2 py-1 text-slate-950 text-2xl flex-1"
+        className="outline-none rounded-md px-2 py-1 text-slate-950 text-2xl flex-1 w-[50vw] sm:w-auto"
         value={userQuery}
         onChange={(e) => setUserQuery(e.target.value)}
       />

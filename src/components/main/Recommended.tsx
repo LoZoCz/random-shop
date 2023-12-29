@@ -26,11 +26,7 @@ const Recommended = () => {
     <section className="grid" style={{ gridTemplateRows: "auto 1fr" }}>
       <h1 className="text-4xl font-bold my-8">Recommended items</h1>
       <div
-        className={`grid gap-12 ${isScrollable} ${isCentered}`}
-        style={{
-          gridTemplateRows: "28rem",
-          gridTemplateColumns: "repeat(5, 18rem)",
-        }}
+        className={`grid gap-12 recommendedBox ${isScrollable} ${isCentered}`}
       >
         {recommended !== undefined
           ? recommended.map((product, i) => (

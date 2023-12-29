@@ -6,7 +6,7 @@ const ProductsOptions = () => {
       <li>
         <Link
           to={"/random-shop/products"}
-          className="text-xl font-medium hover:text-pink-200 transition-all"
+          className="text-xl font-medium text-center hover:text-pink-200 transition-all"
         >
           All products
         </Link>
@@ -14,7 +14,7 @@ const ProductsOptions = () => {
       <li>
         <Link
           to={"/random-shop/categories"}
-          className="text-xl font-medium hover:text-pink-200 transition-all"
+          className="text-xl font-medium text-center hover:text-pink-200 transition-all"
         >
           Categories
         </Link>
