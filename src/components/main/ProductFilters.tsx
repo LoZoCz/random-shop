@@ -8,14 +8,17 @@ const ProductFilters = () => {
   const { scrWidth } = useUserContext();
   const [categories, setCategories] = useState<string[]>([]);
 
-  const classes = `grid gap-2 items-center sm:gap-8 grid-cols-${
-    scrWidth < 400 ? 1 : scrWidth < 900 ? 2 : 4
-  }`;
-
   const isThin =
     scrWidth < 400
       ? categories.filter((_, i) => i < 4)
       : categories.filter((_, i) => i < 8);
+
+  const columns =
+    scrWidth < 400
+      ? "grid-cols-1"
+      : "grid-cols-1 sm:grid-cols-2 md:grid-cols-4";
+
+  const classes = `grid gap-2 items-center sm:gap-8 ${columns}`;
 
   useEffect(() => {
     axios

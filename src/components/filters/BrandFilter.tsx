@@ -11,6 +11,7 @@ const BrandFilter = ({ filters, setFilters }: BrandFilterProps) => {
       <select
         name="brand-select"
         value={filters.brand}
+        className="w-full min-[350px]:max-w-[16rem]"
         onChange={(e) => setFilters({ ...filters, brand: e.target.value })}
       >
         <option value="">All brands</option>

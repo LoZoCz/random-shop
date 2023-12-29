@@ -2,13 +2,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { productTypes, useUserContext } from "../../utils/siteData";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowRight,
-  faArrowLeft,
-  faStar,
-} from "@fortawesome/free-solid-svg-icons";
 import ItemWrapperSkeletoLoading from "../loadingElements/ItemWrapperSkeletoLoading";
+import ProductImageCarousel from "./ProductImageCarousel";
+import ProductInformation from "./ProductInformation";
 
 const ItemWrapper = () => {
   const { id } = useParams();
@@ -35,16 +31,6 @@ const ItemWrapper = () => {
       });
   }, [id]);
 
-  const handleImageChange = (direction: "prev" | "next") => {
-    setImageIndex((prev) => {
-      if (direction === "prev") {
-        return prev === 0 ? allImages.length - 1 : prev - 1;
-      } else {
-        return prev === allImages.length - 1 ? 0 : prev + 1;
-      }
-    });
-  };
-
   const handleClick = (e: React.FormEvent, newItem: productTypes) => {
     e.preventDefault();
 
@@ -60,54 +46,18 @@ const ItemWrapper = () => {
   }
 
   return (
-    <section
-      className="grid place-items-center grid-cols-2 gap-6 px-4 py-16 min-[1600px]:px-32"
-      style={{ height: "calc(100vh - 7rem)" }}
-    >
-      <div className="flex justify-center items-center relative">
-        <img
-          src={allImages[imageIndex]}
-          alt={`${item?.title} image`}
-          className="rounded-md max-h-[30rem] object-cover shadow-md"
-          height={450}
-          width={650}
-        />
-        <button
-          onClick={() => handleImageChange("prev")}
-          className="bg-sky-400 text-white w-12 aspect-square rounded-full absolute top-1/2 -translate-y-1/2 -left-[4rem]"
-        >
-          <FontAwesomeIcon icon={faArrowLeft} />
-        </button>
-        <button
-          onClick={() => handleImageChange("next")}
-          className="bg-sky-400 text-white w-12 aspect-square rounded-full absolute top-1/2 -translate-y-1/2 -right-[4rem]"
-        >
-          <FontAwesomeIcon icon={faArrowRight} />
-        </button>
-      </div>
-      <div className="flex flex-col gap-4">
-        <h1 className="text-6xl font-semibold">{item?.title}</h1>
-        <p className="text-md">{item?.brand}</p>
-        <p className="text-2xl pt-6" style={{ width: "40ch" }}>
-          {item?.description}
-        </p>
-        <p className="text-6xl font-semibold">{item?.price} €</p>
-        <div className="flex justify-between items-center pt-8">
-          <p className="text-xl">
-            <FontAwesomeIcon
-              icon={faStar}
-              className="text-md text-yellow-400"
-            />{" "}
-            {item?.rating}
-          </p>
-          <p className="text-xl">{item?.stock} stocks</p>
-        </div>
-        <button onClick={(e) => handleClick(e, item)} className="add-cart-btn">
-          Add to cart
-        </button>
-      </div>
+    <section className="productView">
+      <ProductImageCarousel
+        title={item?.title}
+        allImages={allImages}
+        imageIndex={imageIndex}
+        setImageIndex={setImageIndex}
+      />
+      <ProductInformation click={handleClick} item={item} />
     </section>
   );
 };
 
 export default ItemWrapper;
+
+// grid-cols-1 grid-rows-2

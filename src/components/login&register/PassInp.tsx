@@ -56,7 +56,7 @@ const PassInp = ({
         )}
       </div>
       {!error?.errorState && (
-        <p className="text-sky-950 absolute -bottom-6 left-0">
+        <p className="text-sky-950 text-center absolute -bottom-6 left-0">
           {error?.errorMsg}
         </p>
       )}

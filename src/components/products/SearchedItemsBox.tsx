@@ -16,9 +16,19 @@ const SearchedItemsBox = ({
   loading,
   dataLoaded,
 }: SearchedItemsBoxProps) => {
+  const columns =
+    searchedItems.length <= 100 && searchedItems.length > 0
+      ? "grid-cols-1 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2"
+      : "grid-cols-1";
+
+  const isNotFound =
+    searchedItems.length === 0 ? "h-96 place-items-center" : "h-full";
+
+  const classes = `grid gap-6 ${columns} ${isNotFound}`;
+
   return (
     <section
-      className="grid gap-8 px-40 py-16"
+      className="grid gap-8 px-4 py-16 2xl:px-40 md:px-16"
       style={{ gridTemplateRows: "auto 1fr" }}
     >
       <h1 className="text-4xl font-bold">
@@ -26,18 +36,7 @@ const SearchedItemsBox = ({
         {searchedItems.length}{" "}
         {searchedItems.length === 1 ? "result" : "results"}
       </h1>
-      <div
-        className={`grid grid-cols-${searchedItems.length ? 5 : 1} gap-6 ${
-          searchedItems.length === 0 ? "h-96 place-items-center" : "h-full"
-        }`}
-        style={{
-          gridTemplateRows: `repeat(${
-            searchedItems.length === 0
-              ? 1
-              : Math.round(searchedItems.length / 5)
-          }, 30rem)`,
-        }}
-      >
+      <div className={classes}>
         {loading && !dataLoaded ? (
           <Loader />
         ) : searchedItems.length > 0 ? (

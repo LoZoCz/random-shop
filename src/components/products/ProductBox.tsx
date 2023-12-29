@@ -31,7 +31,7 @@ const ProductBox = ({ product }: ProductsBoxProps) => {
   return (
     <Link
       to={`/random-shop/product/${product.id}`}
-      className="rounded-md overflow-hidden p-4 border-sky-300 border-2 border-solid h-full group product-box"
+      className="rounded-md overflow-hidden p-4 border-sky-300 border-2 border-solid h-[30rem] group product-box"
     >
       <img
         src={product.images[0]}

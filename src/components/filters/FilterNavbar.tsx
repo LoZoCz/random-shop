@@ -22,14 +22,14 @@ const FilterNavbar = ({ filters, setFilters }: FilternavbarProps) => {
   return (
     <nav className="flex flex-col gap-8 h-fit justify-center-center">
       <h1 className="text-4xl font-bold">Filters</h1>
-      <div className="grid gap-4 bg-sky-100 md:flex md:gap-8 md:items-center md:flex-wrap">
+      <div className="grid gap-4 bg-sky-100 sm:flex sm:gap-8 sm:items-center sm:flex-wrap">
         <BrandFilter filters={filters} setFilters={setFilters} />
         <StockfFilter filters={filters} setFilters={setFilters} />
         <PriceFilter filters={filters} setFilters={setFilters} />
         <RateFilter filters={filters} setFilters={setFilters} />
         <button
           onClick={() => resetFilters()}
-          className="border-sky-300 border-solid border-2 px-4 py-1 rounded-md text-slate-950"
+          className="border-sky-300 border-solid border-2 px-4 py-1 rounded-md text-slate-950 w-fit"
         >
           Reset filters
         </button>

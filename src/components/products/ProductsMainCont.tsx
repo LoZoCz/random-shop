@@ -31,7 +31,7 @@ const ProductsMainGrid = ({ selectedCategory }: ProductsMainGridProps) => {
       const filtered = prod.products.filter((product: productTypes) => {
         return (
           (filters.brand === "" || product.brand === filters.brand) &&
-          (filters.price === "" || product.price >= Number(filters.price)) &&
+          (filters.price === "" || product.price <= Number(filters.price)) &&
           (filters.stock === "" || product.stock >= Number(filters.stock)) &&
           (!filters.rating || product.rating >= filters.rating)
         );

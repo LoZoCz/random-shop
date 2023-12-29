@@ -37,18 +37,18 @@ const RegisterForm = ({ showPassword, setShowPassword }: RegisterFormTypes) => {
     {
       errorType: "blankField",
       errorState: true,
-      errorMsg: "Please fill in all fields",
+      errorMsg: "Please fill form.",
     },
     { errorType: "mail", errorState: true, errorMsg: "Mail is not valid" },
     {
       errorType: "username",
       errorState: true,
-      errorMsg: "Username is too short or have invalid characters",
+      errorMsg: "Username is too short",
     },
     {
       errorType: "password",
       errorState: true,
-      errorMsg: "Password must be at least 8 characters long",
+      errorMsg: "Password too short",
     },
     {
       errorType: "passwordMatch",
@@ -123,10 +123,7 @@ const RegisterForm = ({ showPassword, setShowPassword }: RegisterFormTypes) => {
   };
 
   return (
-    <form
-      onSubmit={(e) => handleRegisterData(e)}
-      className="h-full flex flex-col items-center gap-8 text-slate-950 bg-sky-400 p-4 rounded-md relative"
-    >
+    <form onSubmit={(e) => handleRegisterData(e)} className="registerForm">
       <h1 className="text-4xl text-center text-sky-950 font-semibold">
         Register
       </h1>
@@ -167,7 +164,7 @@ const RegisterForm = ({ showPassword, setShowPassword }: RegisterFormTypes) => {
         />
       </div>
       {!errors[0]?.errorState && (
-        <p className="text-sky-950 absolute bottom-32 left-1/2 -translate-x-1/2">
+        <p className="text-sky-950 text-center absolute bottom-32 left-1/2 -translate-x-1/2">
           {errors[0]?.errorMsg}
         </p>
       )}
