@@ -17,8 +17,10 @@ const UserTabForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="flex-1 flex flex-col gap-6">
-      <h1 className="text-6xl font-semibold text-white">My profile</h1>
-      <div className="grid grid-cols-2 gap-4 text-white font-medium">
+      <h1 className="text-4xl sm:text-6xl font-semibold text-white">
+        My profile
+      </h1>
+      <div className="flex flex-wrap gap-4 text-white font-medium min-[800px]:grid min-[800px]:grid-cols-2">
         <UserTabInput
           label="First name"
           objLabel="firstName"

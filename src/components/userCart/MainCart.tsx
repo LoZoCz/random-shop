@@ -10,12 +10,11 @@ const MainCart = () => {
   );
 
   return (
-    <main
-      className="flex justify-center items-center py-16"
-      style={{ minHeight: "calc(100vh - 8rem)" }}
-    >
-      <section className="bg-sky-400 p-4 rounded-lg min-w-[48rem]">
-        <h1 className="text-6xl font-bold text-white mb-6">My cart</h1>
+    <main className="userMainCart">
+      <section className="bg-sky-400 p-4 rounded-lg">
+        <h1 className="text-3xl min-[300px]:font-6xl font-bold text-white mb-6">
+          My cart
+        </h1>
         {userCart.length !== 0 ? (
           <CartSect />
         ) : (
@@ -23,7 +22,7 @@ const MainCart = () => {
             Your cart is empty
           </h3>
         )}
-        <h3 className="text-3xl text-white font-semibold mt-4">
+        <h3 className="text-xl min-[300px]:text-3xl text-white font-semibold mt-4">
           Total: €{total}
         </h3>
       </section>

@@ -38,9 +38,3 @@ ReactDOM.createRoot(document.getElementById("main-cont")!).render(
     </AuthProvider>
   </React.StrictMode>,
 );
-
-//DONE 1 skeleton loading dla elementow z api
-
-//TODO 2 responsywnosc strony
-
-//? moze dodac ciemny tryb

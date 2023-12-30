@@ -1,10 +1,13 @@
 import { Link } from "react-router-dom";
+import { getImageUrl } from "../../utils/siteData";
 
 type CategoryBoxProps = {
   category: string;
 };
 
 const CategoryBox = ({ category }: CategoryBoxProps) => {
+  const imageUrl = getImageUrl(`${category}.svg`);
+
   return (
     <Link
       to={`/random-shop/categories/${category}`}
@@ -12,7 +15,7 @@ const CategoryBox = ({ category }: CategoryBoxProps) => {
       key={category}
     >
       <img
-        src={`src/assets/category__images/${category}.svg`}
+        src={imageUrl}
         alt="filter-image"
         className="w-3/4 aspect-video rounded-lg drop-shadow-xl"
       />

@@ -14,5 +14,3 @@ const SiteInfo = () => {
 };
 
 export default SiteInfo;
-
-// TODO 1 przy mneijszej szerkosci ekranu zrob z tego pokaz slajdow, ktory sam sie zmienia po np 3sek

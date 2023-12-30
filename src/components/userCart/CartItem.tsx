@@ -1,5 +1,9 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { UserCartTypes, useUserContext } from "../../utils/siteData";
+import {
+  UserCartTypes,
+  isTouchDevice,
+  useUserContext,
+} from "../../utils/siteData";
 import { faMinus, faPlus, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 type CartItemProps = {
@@ -8,7 +12,10 @@ type CartItemProps = {
 };
 
 const CartItem = ({ item, index }: CartItemProps) => {
-  const { updateUserCartQuantity, deleteItemFromCart } = useUserContext();
+  const { updateUserCartQuantity, deleteItemFromCart, scrWidth } =
+    useUserContext();
+  const isMobile = isTouchDevice() || scrWidth < 768 ? false : true;
+
   return (
     <div
       key={index}
@@ -40,9 +47,16 @@ const CartItem = ({ item, index }: CartItemProps) => {
       </div>
       <button
         onClick={() => deleteItemFromCart(item.id)}
-        className="delete-item-btn"
+        className={`delete-item-btn ${
+          !isMobile ? "w-8 h-8 bg-red-600" : "w-0 h-8"
+        }`}
       >
-        <FontAwesomeIcon icon={faTrashCan} />
+        <FontAwesomeIcon
+          icon={faTrashCan}
+          className={`${
+            !isMobile ? "opacity-100" : "opacity-0 transition-all duration-300"
+          }`}
+        />
       </button>
     </div>
   );

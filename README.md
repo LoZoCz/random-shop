@@ -9,13 +9,13 @@ To get started with QuantumMart, follow these simple steps:
 1. Clone the Repository:
 
 ```bash
-git clone https://github.com/your-username/QuantumMart.git
+git clone https://github.com/LoZoCz/random-shop
 ```
 
 2. Navigate to the Project Directory:
 
 ```bash
-cd QuantumMart
+cd random-shop
 ```
 
 3. Install Dependencies:
@@ -28,6 +28,7 @@ npm install
 
 ```bash
 npm run dev
+npm run backServer
 ```
 
 Open QuantumMart in Your Browser:

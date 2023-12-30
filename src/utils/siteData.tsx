@@ -237,3 +237,7 @@ export const defaultUserCart = {
 export const isTouchDevice = () => {
   return "ontouchstart" in window || navigator.maxTouchPoints > 0;
 };
+
+export const getImageUrl = (path: string) => {
+  return new URL(`../assets/${path}`, import.meta.url).href;
+};

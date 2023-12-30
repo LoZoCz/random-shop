@@ -59,5 +59,3 @@ const ItemWrapper = () => {
 };
 
 export default ItemWrapper;
-
-// grid-cols-1 grid-rows-2

@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 $grad-clr: linear-gradient(
   -45deg,
@@ -19,10 +19,6 @@ $grad-clr: linear-gradient(
   hsl(286deg 100% 77%) 81%,
   hsl(303deg 89% 74%) 100%
 );
-
-* {
-  box-sizing: border-box;
-}
 
 .font-lato {
   font-family: "Lato", sans-serif;
@@ -168,7 +164,7 @@ input::-webkit-inner-spin-button {
 }
 
 .userTabInput {
-  @apply bg-transparent border-transparent border-b-white border-solid border-4 rounded-md outline-none w-full;
+  @apply bg-transparent border-transparent border-b-white border-solid border-4 rounded-md outline-none w-full flex-1;
 }
 
 .header-options-links {
@@ -178,7 +174,7 @@ input::-webkit-inner-spin-button {
 }
 
 .add-cart-btn {
-  @apply bg-sky-400 text-white px-12 py-2 font-semibold self-center rounded-md hover:bg-pink-500 transition-colors duration-300;
+  @apply bg-sky-400 text-white px-12 py-2 font-semibold self-start rounded-md hover:bg-pink-500 transition-colors duration-300;
 }
 
 .add-cart-mini-btn {
@@ -186,15 +182,11 @@ input::-webkit-inner-spin-button {
 }
 
 .delete-item-btn {
-  @apply bg-red-400 text-white w-0 h-8 absolute bottom-[0.35rem] right-2 transition-all duration-300 rounded-sm;
-}
-
-.delete-item-btn svg {
-  @apply opacity-0 transition-all duration-300;
+  @apply bg-red-600 text-white absolute bottom-[0.35rem] right-2 transition-all duration-300 rounded-sm;
 }
 
 .user-cart-item:hover .delete-item-btn {
-  @apply w-8 bg-red-600;
+  @apply w-8;
 }
 
 .user-cart-item:hover .delete-item-btn svg {
@@ -240,7 +232,7 @@ input::-webkit-inner-spin-button {
 }
 
 .recommendedBox {
-  grid-template-rows: 28rem;
+  grid-template-rows: 30rem;
   grid-template-columns: repeat(5, 18rem);
 
   @media (width < 400px) {
@@ -335,4 +327,22 @@ input::-webkit-inner-spin-button {
   }
 }
 
-//!! responsywnosc wysiwetlania panelu uzytkownika i koszyka
+.userMainTab {
+  @apply flex justify-center items-center py-20 px-4;
+  height: calc(100vh - 7rem);
+
+  @media (width < 640px) {
+    padding-block: 2rem;
+    height: auto;
+  }
+}
+
+.userMainCart {
+  @apply flex justify-center items-center py-20 px-4;
+  height: calc(100vh - 7rem);
+
+  @media (width < 802px) {
+    height: auto;
+    padding-block: 1rem;
+  }
+}
